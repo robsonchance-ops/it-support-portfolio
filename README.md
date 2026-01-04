@@ -1,4 +1,6 @@
 # it-support-portfolio
+👋 Hi, I'm an entry-level IT Support candidate showcasing hands-on networking and documentation projects.
+
 Level 3 IT Smart Tech Project
 
 This repository showcases practical IT support, networking, and documentation work completed as part of hands-on training and self-directed projects.
