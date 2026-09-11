@@ -1,4 +1,6 @@
 # it-support-portfolio
+👋 Hi, I'm an entry-level IT Support candidate showcasing hands-on networking and documentation projects.
+
 Level 3 IT Smart Tech Project
 
 This repository showcases practical IT support, networking, and documentation work completed as part of hands-on training and self-directed projects.
@@ -20,6 +22,7 @@ Designed and configured a small office network with:
 - Wired & wireless devices
 - DHCP and static IP allocation
 - IoT server and connected smart devices
+https://github.com/robsonchance-ops/it-support-portfolio/blob/306917d9eaeab83616e818a04b8144285443ce2f/SmartOffice%20project.pkt
 
 ### 📘 Network User Guide
 Created a non-technical user guide enabling staff to:
@@ -27,11 +30,14 @@ Created a non-technical user guide enabling staff to:
 - Configure static and dynamic IPs
 - Add and manage IoT devices
 - Perform basic troubleshooting
+https://github.com/robsonchance-ops/it-support-portfolio/blob/bc3150266abec9b587a153125a7735c0b8ae9601/Smart%20Office%20User%20Guide.docx
 
 ### 📊 Project Management
 Planned and tracked the project using:
 - Gantt chart (project timeline)
+https://github.com/robsonchance-ops/it-support-portfolio/blob/3c9c470b4847807efef2a229fc47e2e78be58af9/Gantt_Chart_Project.xlsx
 - Kanban board (task flow & progress)
+https://github.com/robsonchance-ops/it-support-portfolio/blob/3c9c470b4847807efef2a229fc47e2e78be58af9/Kanban_Board_Project.xlsx
 
 ## Tools Used
 - Cisco Packet Tracer
