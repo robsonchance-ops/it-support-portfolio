@@ -38,12 +38,12 @@ https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CC
 ### 📊 Project Management
 Planned and tracked the project using:
 - Gantt chart (project timeline)
-https://github.com/robsonchance-ops/it-support-portfolio/blob/3c9c470b4847807efef2a229fc47e2e78be58af9/Gantt_Chart_Project.xlsx
+https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CCNA-Qualification/Gantt_Chart_Project.xlsx
 
 ![Gantt Chart](Gantt_Chart.png)
 
 - Kanban board (task flow & progress)
-https://github.com/robsonchance-ops/it-support-portfolio/blob/3c9c470b4847807efef2a229fc47e2e78be58af9/Kanban_Board_Project.xlsx
+https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CCNA-Qualification/Kanban_Board_Project.xlsx
 
 ![Kanban Board](Kanban_Board.png)
 
