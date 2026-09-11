@@ -33,9 +33,7 @@ Created a non-technical user guide enabling staff to:
 - Configure static and dynamic IPs
 - Add and manage IoT devices
 - Perform basic troubleshooting
-https://github.com/robsonchance-ops/it-support-portfolio/blob/bc3150266abec9b587a153125a7735c0b8ae9601/Smart%20Office%20User%20Guide.docx
-
-![User Guide](Smart Office User Guide.pdf)
+https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CCNA-Qualification/Smart%20Office%20User%20Guide.pdf
 
 ### 📊 Project Management
 Planned and tracked the project using:
