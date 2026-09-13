@@ -1,56 +1,220 @@
-# it-support-portfolio
-👋 Hi, I'm an entry-level IT Support candidate showcasing hands-on networking and documentation projects.
+# Raspberry Pi WireGuard VPN
 
-Level 3 IT Smart Tech Project
+## Overview
 
-This repository showcases practical IT support, networking, and documentation work completed as part of hands-on training and self-directed projects.
+I built and configured a self-hosted WireGuard VPN on a Raspberry Pi.
+
+The goal of the project was to create a secure VPN server that allows remote devices to route their internet traffic through my home network.
+
+This project gave me practical experience with Linux networking, VPN configuration, IP forwarding, NAT, port forwarding, SSH/SFTP, and troubleshooting.
+
+## Hardware & Software
+
+- Raspberry Pi
+- Raspberry Pi OS (Debian Trixie)
+- WireGuard
+- Linux `iptables`
+- systemd
+- SSH/SFTP
+- iPhone WireGuard client
+- Windows WireGuard client
+- Virgin Media Hub 5x router
+
+## Network Design
+
+```text
+Internet
+    │
+    ▼
+Virgin Media Router
+    │
+    │ UDP 51820
+    ▼
+Raspberry Pi
+192.168.0.137
+    │
+    │ WireGuard
+    │ 10.8.0.0/24
+    │
+    ├── Server: 10.8.0.1
+    │
+    ├── iPhone: 10.8.0.2
+    │
+    └── Windows PC: 10.8.0.3
+```
+
+## Configuration
+
+### WireGuard Server
+
+The Raspberry Pi runs the WireGuard interface `wg0`.
+
+The server uses:
+
+- Address: `10.8.0.1/24`
+- Listen port: `51820`
+- Protocol: UDP
+
+IP forwarding was enabled using:
+
+```text
+net.ipv4.ip_forward=1
+```
+
+The setting was stored in:
+
+```text
+/etc/sysctl.d/99-wireguard.conf
+```
+
+I verified IP forwarding with:
+
+```bash
+sysctl net.ipv4.ip_forward
+```
+
+which returned:
+
+```text
+net.ipv4.ip_forward = 1
+```
+
+I also configured NAT using `iptables` so VPN clients can access the internet through the Raspberry Pi's Ethernet connection.
+
+### Router Configuration
+
+I configured port forwarding on the Virgin Media Hub 5x:
+
+| Setting | Value |
+|---|---|
+| Local IP | 192.168.0.137 |
+| Local port | 51820 |
+| External port | 51820 |
+| Protocol | UDP |
+| Status | Enabled |
+
+This allows incoming WireGuard traffic from the internet to reach the Raspberry Pi.
+
+## Client Configuration
+
+I created separate WireGuard peers for each device.
+
+### iPhone
+
+The iPhone was configured with:
+
+```text
+10.8.0.2/32
+```
+
+The connection was tested using both Wi-Fi and cellular data.
+
+The WireGuard handshake successfully appeared on the Raspberry Pi, confirming that the phone was communicating with the VPN server.
+
+### Windows PC
+
+A separate peer was created for the Windows PC:
+
+```text
+10.8.0.3/32
+```
+
+The configuration was transferred from the Raspberry Pi using SFTP and imported into the Windows WireGuard application.
+
+## Troubleshooting
+
+During setup I encountered several issues which required troubleshooting.
+
+### `/etc/sysctl.conf` Configuration
+
+The original guide referenced `/etc/sysctl.conf`, but my Raspberry Pi OS installation used the `/etc/sysctl.d/` configuration directory.
+
+I created:
+
+```text
+/etc/sysctl.d/99-wireguard.conf
+```
+
+with:
+
+```text
+net.ipv4.ip_forward=1
+```
+
+I then verified that IP forwarding was enabled with:
+
+```bash
+sysctl net.ipv4.ip_forward
+```
+
+### `iptables: command not found`
+
+Initially WireGuard failed to start because `iptables` was not installed.
+
+The error was:
+
+```text
+iptables: command not found
+```
+
+I identified the missing dependency, installed `iptables`, and then successfully started the WireGuard interface.
+
+### Verifying the WireGuard Interface
+
+I used:
+
+```bash
+ip link show wg0
+```
+
+to verify that the WireGuard network interface existed.
+
+I also used:
+
+```bash
+sudo wg show
+```
+
+to inspect the server configuration and connected peers.
+
+Once the iPhone connected, the server displayed a successful handshake and data transfer:
+
+```text
+latest handshake: ...
+transfer: ... received, ... sent
+```
+
+This confirmed that the VPN connection was functioning.
 
 ## Skills Demonstrated
-- Network configuration (static & DHCP)
-- LAN segmentation & subnetting
-- IoT device integration
-- End-user documentation
-- Troubleshooting methodology
-- Project planning (Gantt & Kanban)
-- Cisco Packet Tracer
 
-## Projects Included
+- Linux system administration
+- Raspberry Pi administration
+- Networking fundamentals
+- IPv4 addressing
+- NAT
+- IP forwarding
+- UDP port forwarding
+- VPN configuration
+- WireGuard
+- `iptables`
+- systemd services
+- SSH
+- SFTP
+- Windows networking
+- Troubleshooting
+- Technical documentation
 
-### 🖧 Smart Office Network (Cisco Packet Tracer)
-Designed and configured a small office network with:
-- Multiple subnets
-- Wired & wireless devices
-- DHCP and static IP allocation
-- IoT server and connected smart devices
-https://github.com/robsonchance-ops/it-support-portfolio/blob/306917d9eaeab83616e818a04b8144285443ce2f/SmartOffice%20project.pkt
+## What I Learned
 
-![Smart Office Packet Tracer](SmartOfficeSim.png)
+This project helped me understand how a VPN works beyond simply installing a VPN application.
 
+I configured the server, router, and individual clients myself, diagnosed configuration and package issues, and verified connectivity using Linux networking tools and WireGuard's own status information.
 
-### 📘 Network User Guide
-Created a non-technical user guide enabling staff to:
-- Connect devices via wired & Wi-Fi
-- Configure static and dynamic IPs
-- Add and manage IoT devices
-- Perform basic troubleshooting
-https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CCNA-Qualification/Smart%20Office%20User%20Guide.pdf
+The project also reinforced the importance of understanding why a configuration is required rather than blindly following a tutorial.
 
-### 📊 Project Management
-Planned and tracked the project using:
-- Gantt chart (project timeline)
-https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CCNA-Qualification/Gantt_Chart_Project.xlsx
+## Project Outcome
 
-![Gantt Chart](Gantt_Chart.png)
+The Raspberry Pi successfully operates as a WireGuard VPN server, with separate client configurations for my iPhone and Windows PC.
 
-- Kanban board (task flow & progress)
-https://github.com/robsonchance-ops/it-support-portfolio/blob/Office-Sim-From-CCNA-Qualification/Kanban_Board_Project.xlsx
-
-![Kanban Board](Kanban_Board.png)
-
-## Tools Used
-- Cisco Packet Tracer
-- Microsoft Excel
-- Microsoft Word
-- GitHub
-## Career Goal
-Seeking entry-level IT Support / Service Desk / Junior Network roles.
+Both clients can establish a WireGuard connection to the Raspberry Pi, with the server showing successful handshakes and traffic transfer.
