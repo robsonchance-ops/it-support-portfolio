@@ -221,21 +221,21 @@ The Raspberry Pi successfully operates as a WireGuard VPN server, with separate 
 
 ### WireGuard server and peer handshake
 
-![WireGuard server and peer handshake](Screenshots/wireguard-handshake.png)
+![WireGuard server and peer handshake](Screenshots/SuccessfulHandshake.png)
 
 ### IP forwarding
 
-![IP forwarding enabled](Screenshots/ip-forwarding.png)
+![IP forwarding enabled](Screenshots/IPforwarding.png)
 
 ### Router port forwarding
 
-![Router port forwarding](Screenshots/router-port-forwarding.png)
+![Router port forwarding](Screenshots/RouterPortForwarding.png)
 
 ### Windows WireGuard client
 
-![Windows WireGuard client](Screenshots/windows-wireguard.png)
+![Windows WireGuard client](Screenshots/wireguard.png)
 
 ### VPN connectivity test
 
-![VPN connectivity test](Screenshots/vpn-ip-test.png)
+![VPN connectivity test](Screenshots/VPNusage.png)
 Both clients can establish a WireGuard connection to the Raspberry Pi, with the server showing successful handshakes and traffic transfer.
