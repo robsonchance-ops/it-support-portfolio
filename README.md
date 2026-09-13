@@ -221,7 +221,7 @@ The Raspberry Pi successfully operates as a WireGuard VPN server, with separate 
 
 ### Hardware
 
-![Raspberry Pi Model 2 B](Screenshots/182pi.png)
+![Raspberry Pi Model 2 B](Screenshots/182pi.jpg)
 
 ### WireGuard server and peer handshake
 
