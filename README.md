@@ -238,4 +238,5 @@ The Raspberry Pi successfully operates as a WireGuard VPN server, with separate 
 ### VPN connectivity test
 
 ![VPN connectivity test](Screenshots/VPNusage.png)
+
 Both clients can establish a WireGuard connection to the Raspberry Pi, with the server showing successful handshakes and traffic transfer.
